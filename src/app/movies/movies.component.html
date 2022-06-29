@@ -1,12 +1,22 @@
+
+
+
 <div class="card">
     <div class="card-header">
         {{titleName}}
     </div>
 
     <ul class="list-group list-group-flush list-unstyled">
-        <li *ngFor="let item of movies;let i = index" class="list-group-item">
-            <span class="tag-pill bg-primary px-1 rounded text-light">{{item.id}}</span> {{item.name}}
-             <span class="close">x</span>
+        <li *ngFor="let item of movies;let i = index" class="list-group-item d-flex" (click)="onSelect(item)"
+        [class.active]="item===selectedMovie"
+        >
+            <span class="tag-pill bg-primary px-1 rounded text-light"
+            [class.bg-success]="item===selectedMovie"
+            >{{item.id}}</span>
+            <span class="ms-3">
+                {{item.name}}
+            </span> 
+             <span class="close bg-danger text-light px-2 pb-1 rounded">x</span>
         </li>
     </ul>
 </div>
