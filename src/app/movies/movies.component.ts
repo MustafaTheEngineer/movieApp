@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Movie } from "../movie";
+import { Movies } from "../movie.datasource";
 
 @Component({
     selector: 'movies',
@@ -11,8 +13,15 @@ import { Component } from "@angular/core";
 })
 
 export class MoviesComponent {
-    num:number=5;
+    private title:string = "Naber";
+
+    movies:Movie[] = Movies;
+
     constructor() {
         
+    }
+
+    get titleName(){
+        return this.title; 
     }
 }
