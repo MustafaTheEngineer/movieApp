@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../movie'; 
 
 @Component({
   selector: 'movie',

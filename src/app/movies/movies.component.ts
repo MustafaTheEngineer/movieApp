@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Movie } from "../movie";
-import { Movies } from "../movie.datasource";
+import { MovieService } from "../movie.service";
 
 @Component({
     selector: 'movies',
@@ -8,17 +8,24 @@ import { Movies } from "../movie.datasource";
     styleUrls: ['./movies.component.css']
 })
 
-export class MoviesComponent {
+export class MoviesComponent implements OnInit {
     private title:string = "Naber";
 
-    movies:Movie[] = Movies;
-    selectedMovie:Movie;
+    movies:Movie[]=[];
+    selectedMovie:Movie = {
+        id:0,
+        name: ""
+    }
 
-    constructor() {
-        this.selectedMovie = {
-            id:0,
-            name: ""
-        }
+    constructor(private movieService:MovieService) {
+    }
+
+    ngOnInit():void{
+        this.getMovies();
+    }
+
+    getMovies():void{
+        this.movies = this.movieService.Movies;
     }
 
     get titleName(){
