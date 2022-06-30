@@ -25,7 +25,9 @@ export class MoviesComponent implements OnInit {
     }
 
     getMovies():void{
-        this.movies = this.movieService.Movies;
+        this.movieService.getMovies().subscribe((movies:Movie[]) => {
+            this.movies = movies;
+        });
     }
 
     get titleName(){
