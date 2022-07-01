@@ -14,7 +14,9 @@ export class MoviesComponent implements OnInit {
     movies:Movie[]=[];
     selectedMovie:Movie = {
         id:0,
-        name: ""
+        name: "",
+        description: "",
+        imageUrl: ""
     }
 
     constructor(private movieService:MovieService) {

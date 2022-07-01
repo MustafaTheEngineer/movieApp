@@ -14,7 +14,9 @@ export class MovieDetailComponent implements OnInit {
   constructor() {
     this.movie = {
       id:0,
-      name:""
+      name:"",
+      description: "",
+      imageUrl: ""
     }
    }
 
