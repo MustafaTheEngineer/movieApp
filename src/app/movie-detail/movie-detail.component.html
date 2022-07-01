@@ -1,5 +1,8 @@
 <div class="card mb-3 p-2">
     <div class="car-body">
+        <a routerLink="/detail/{{movie.id}}">
+            <img src="assets/img/{{movie.imageUrl}}" alt="" class="card-img w-100">
+            </a>
         <span class="tag-pill"
         [class.invisible]="movie.id == 0"
         >
