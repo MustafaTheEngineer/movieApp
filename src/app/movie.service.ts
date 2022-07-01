@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieService {
 
+  private apiMoviesUrl = 'api/movies';
+
   constructor(private loggingService:LoggingService,
     private http:HttpClient
     ) { }
@@ -17,15 +19,11 @@ export class MovieService {
   getMovies(): Observable<Movie[]>{
     this.http.get('')
     this.loggingService.add('MovieService: listing movie');
-    return of(Movies);
+    return this.http.get<Movie[]>(this.apiMoviesUrl);
   }
 
   getMovie(id:number): Observable<Movie> {
     this.loggingService.add('MovieService: get movie detail by id = ' + id);
-    for (let index:number = 0; index < Movies.length; index++) {
-      if(Movies[index].id === id)
-        return of(Movies[index]); 
-    }
-    return of(Movies[0]);
+    return this.http.get<Movie>(this.apiMoviesUrl+'/'+id);
   }
 }
